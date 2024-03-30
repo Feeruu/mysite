@@ -16,6 +16,7 @@
             {% endif %}
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <h1><a href="/">Размещение объявлений</a></h1>
+            <div id="clock">Loading...</div>
         </div>
         <div class="content container">
             <div class="row">
@@ -25,5 +26,16 @@
                 </div>
             </div>
         </div>
+        <script>
+                let url = 'ws://127.0.0.1:8000/ws'
+                const socket = new WebSocket(url)
+
+                socket.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+                    const clockElement = document.getElementById('clock');
+                    clockElement.innerHTML = 'Время: ' + data.clock;
+                    clockElement.style.color = 'white';
+                };
+        </script>
     </body>
 </html>

@@ -36,16 +36,24 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'daphne',
     'blog',
     'debug_toolbar',
+    'channels',
+    'django.contrib.staticfiles',
 ]
 LOGIN_REDIRECT_URL = '/'
-
+a = 1
 CACHES = {
     'default': {
         'BACKEND':'django.core.cache.backends.locmem.LocMemCache',
 
+    }
+}
+
+CHANNELS_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
     }
 }
 
@@ -83,7 +91,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
+ASGI_APPLICATION = 'mysite.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -140,4 +148,3 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-a = 1

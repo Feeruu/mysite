@@ -26,7 +26,6 @@ def post_list(request):
     else:
         return redirect('user_post_list')
 
-@cache_page(60 * 15)
 def user_post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/user_post_list.html', {'posts': posts})
