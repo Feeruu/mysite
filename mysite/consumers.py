@@ -1,4 +1,3 @@
-# animeweb/main/consumers.py
 
 import asyncio
 import json
